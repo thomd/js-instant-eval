@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -e
+#set -e
 [ -n "$JS_DEBUG" ] && set -x
 
 if [ $# -eq 0 ] || [ ! -f ${!#} ]; then
