@@ -1,6 +1,6 @@
 # js-instant-eval
 
-`js(1)` is a shell script that watches and evaluates javascript using [node][1] or [rhino][2] javascript engine.
+`js(1)` is a shell script that **watches** and **evaluates** javascript using [node][1] or [rhino][2] javascript engine.
 
 ## Install
 
