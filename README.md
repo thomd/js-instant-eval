@@ -9,6 +9,9 @@
     make test
     make install
 
+On `Cygwin` you need to set `CYGWIN=nodosfilewarning` in the global Windows environment (Control Panel > System > Advanced > Environment
+Variables).
+
 ## Usage
 
 Default javascript engine is node

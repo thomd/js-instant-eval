@@ -7,7 +7,17 @@ if [ $# -eq 0 ] || [ ! -f ${!#} ]; then
 fi
 
 ENGINE='node'
-TMPFILE=`mktemp /tmp/js.XXXXXX` || exit 1
+
+case "$(uname)" in
+  CYGWIN*) CYGWIN=true ;;
+  *) ;;
+esac
+
+if [ $CYGWIN ]; then
+  TMPFILE=$(cygpath -pw `mktemp /tmp/js.XXXXXX`)
+else
+  TMPFILE=`mktemp /tmp/js.XXXXXX`
+fi
 
 function compile {
   if [ "node" = "$ENGINE" ]; then
@@ -20,14 +30,18 @@ function compile {
 }
 
 function sha {
-  echo `ls -lR | md5`
+  if [ $CYGWIN ]; then
+    echo `ls -lR | md5sum`
+  else
+    echo `ls -lR | md5`
+  fi
 }
 old_sha=$(sha)
 
 function watch {
   while true; do
     if [[ $(sha) != $old_sha ]]; then
-      clear
+      [ $CYGWIN ] && printf "\033c" || clear
       compile
       old_sha=$(sha)
     fi
@@ -56,7 +70,7 @@ if [ $NOWATCH ]; then
   compile
 else
   trap exit SIGINT
-  clear
+  [ $CYGWIN ] && printf "\033c" || clear
   compile
   watch
 fi
