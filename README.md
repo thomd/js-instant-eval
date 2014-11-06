@@ -1,5 +1,7 @@
 # js-instant-eval
 
+[![Build Status](https://travis-ci.org/thomd/js-instant-eval.png)](https://travis-ci.org/thomd/js-instant-eval)
+
 `js(1)` is a shell script that **watches** and **evaluates** javascript using [node][1] or [rhino][2] javascript engine.
 
 ## Install
