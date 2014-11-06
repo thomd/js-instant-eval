@@ -34,8 +34,22 @@ setup(){
   [ "${lines[0]}" == "foo" ]
 }
 
+@test "invoking 'alert()' with rhino should print to console" {
+  echo "alert('foo');" > $TEST_SCRIPT
+  run js --no-watch --engine rhino $TEST_SCRIPT
+  [ "$status" -eq 0 ]
+  [ "${lines[0]}" == "foo" ]
+}
+
 @test "invoking 'print()' with node.js should print to console using console.log()" {
   echo "print('foo');" > $TEST_SCRIPT
+  run js --no-watch $TEST_SCRIPT
+  [ "$status" -eq 0 ]
+  [ "${lines[0]}" == "foo" ]
+}
+
+@test "invoking 'alert()' with node.js should print to console using console.log()" {
+  echo "alert('foo');" > $TEST_SCRIPT
   run js --no-watch $TEST_SCRIPT
   [ "$status" -eq 0 ]
   [ "${lines[0]}" == "foo" ]

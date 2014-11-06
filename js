@@ -21,10 +21,10 @@ fi
 
 function compile {
   if [ "node" = "$ENGINE" ]; then
-    sed 's/print/console.log/g' $FILE > $TMPFILE
+    perl -pe 's/(print|alert)/console.log/g' $FILE > $TMPFILE
     node $TMPFILE
   else
-    sed 's/console.log/print/g' $FILE > $TMPFILE
+    perl -pe 's/(console.log|alert)/print/g' $FILE > $TMPFILE
     rhino -f $TMPFILE
   fi
 }
