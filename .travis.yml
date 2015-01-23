@@ -1,10 +1,7 @@
-language: node_js
-node_js:
-  - "0.10"
-install:
-  - "git clone https://github.com/sstephenson/bats.git"
-script:
-  - "bats/bin/bats --tap test"
+install: git clone https://github.com/sstephenson/bats.git
+script: bats/bin/bats --tap test
+# skips unnecessary Ruby-specific setup
+language: c
 notifications:
   email:
     on_success: never
