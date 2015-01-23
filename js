@@ -22,6 +22,7 @@ fi
 function compile {
   if [ "node" = "$ENGINE" ]; then
     perl -pe 's/(print|alert)/console.log/g' $FILE > $TMPFILE
+    export NODE_PATH="$PWD/node_modules"
     node $TMPFILE
   else
     perl -pe 's/(console.log|alert)/print/g' $FILE > $TMPFILE
