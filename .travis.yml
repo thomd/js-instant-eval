@@ -1,7 +1,8 @@
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -y node rhino
 install:
   - git clone https://github.com/sstephenson/bats.git
-  - apt-get install node
-  - apt-get install rhino
 script: bats/bin/bats --tap test
 # skips unnecessary Ruby-specific setup
 language: c
