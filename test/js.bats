@@ -55,12 +55,10 @@ setup(){
   [ "${lines[0]}" == "foo" ]
 }
 
-@test "invoking erroneous javascript with node.js should throw a floating-point exception" {
+@test "invoking erroneous javascript with node.js should throw an reference error" {
   echo "console.log(foo);" > $TEST_SCRIPT
   run js --no-watch $TEST_SCRIPT
-  echo $status
-  [ "$status" -eq 8 ]
-  echo $lines
+  [ "$status" -ne 0 ]
   [ "${lines[3]::15}" == "ReferenceError:" ]
 }
 
