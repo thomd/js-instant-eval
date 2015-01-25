@@ -10,6 +10,7 @@ ENGINE='node'
 
 case "$(uname)" in
   CYGWIN*) CYGWIN=true ;;
+  LINUX*) LINUX=true ;;
   *) ;;
 esac
 
@@ -31,7 +32,7 @@ function compile {
 }
 
 function sha {
-  if [ $CYGWIN ]; then
+  if [ $CYGWIN ] || [ $LINUX ]; then
     echo `ls -lR | md5sum`
   else
     echo `ls -lR | md5`
