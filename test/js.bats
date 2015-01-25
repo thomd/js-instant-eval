@@ -17,7 +17,6 @@ setup(){
   echo "console.log('foo');" > $TEST_SCRIPT
   run js --no-watch $TEST_SCRIPT
   [ "$status" -eq 0 ]
-  echo ${lines[0]}
   [ "${lines[0]}" == "foo" ]
 }
 

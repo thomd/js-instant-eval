@@ -32,6 +32,8 @@ function compile {
 }
 
 function sha {
+  echo "LINUX: $LINUX"
+  echo "CYGWIN: $CYGWIN"
   if [ $CYGWIN ] || [ $LINUX ]; then
     echo `ls -lR | md5sum`
   else
