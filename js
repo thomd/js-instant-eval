@@ -25,7 +25,7 @@ function compile {
     perl -pe 's/(print|alert)/console.log/g' $FILE > $TMPFILE
     export NODE_PATH="$PWD/node_modules"
     if [ $LINUX ]; then
-      nodejs $TMPFILE
+      /usr/bin/node $TMPFILE
     else
       node $TMPFILE
     fi
