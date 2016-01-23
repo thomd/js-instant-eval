@@ -22,7 +22,7 @@ fi
 
 function compile {
   if [ "node" = "$ENGINE" ]; then
-    perl -pe 's/(print\(|alert\()/console.log(/g' $FILE > $TMPFILE
+    perl -pe 's/(^ *)(print\(|alert\()/\1console.log(/g' $FILE > $TMPFILE
     export NODE_PATH="$PWD/node_modules"
     if [ $LINUX ]; then
       nodejs $TMPFILE
@@ -30,7 +30,7 @@ function compile {
       node $TMPFILE
     fi
   else
-    perl -pe 's/(console.log\(|alert\()/print(/g' $FILE > $TMPFILE
+    perl -pe 's/(^ *)(console.log\(|alert\()/\1print(/g' $FILE > $TMPFILE
     rhino -f $TMPFILE
   fi
 }
