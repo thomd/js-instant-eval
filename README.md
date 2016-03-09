@@ -21,6 +21,13 @@ Default javascript engine is node
     js script.js
     js --engine rhino script.js
 
+## on ES6
+
+Experimental evaluation of ES6. Install babel and es2015 preset:
+
+    npm i babel-cli babel-preset-es2015
+    es script.js
+
 [1]: http://nodejs.org/
 [2]: https://developer.mozilla.org/de/docs/Rhino
 
