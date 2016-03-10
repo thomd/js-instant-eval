@@ -3,6 +3,7 @@
 
 FILE=$1
 TMPFILE=`mktemp /tmp/es.XXXXXX`
+test -d node_modules && ln -s "$PWD/node_modules" /tmp/node_modules
 
 function compile {
   babel --presets es2015,react $FILE -o $TMPFILE
