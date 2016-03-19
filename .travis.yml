@@ -5,6 +5,7 @@ before_install:
   - "sudo apt-get install -qq openjdk-6-jre"
   - "PACKAGE=rhino1_7R4; curl -L -O https://github.com/downloads/mozilla/rhino/$PACKAGE.zip && sudo unzip $PACKAGE -d /opt/ && rm $PACKAGE.zip"
   - "PACKAGE=rhino1_7R4; echo -e '#!/bin/sh\\njava -jar /opt/rhino1_7R4/js.jar $@' | sudo tee /usr/local/bin/rhino && sudo chmod +x /usr/local/bin/rhino"
+  - "npm i babel-cli babel-preset-es2015 babel-preset-react"
 install:
   - git clone https://github.com/sstephenson/bats.git
 script: bats/bin/bats --tap test

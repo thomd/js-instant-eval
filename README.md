@@ -23,11 +23,11 @@ Default javascript engine is node
 
 ## on ES6
 
-Experimental evaluation of ES6. Install babel and es2015 preset:
+`es(1)` is an experimental evaluation of ES6. Install [babel][3] and es2015 preset:
 
-    npm i babel-cli babel-preset-es2015
+    npm i babel-cli babel-preset-es2015 babel-preset-react
     es script.js
 
 [1]: http://nodejs.org/
 [2]: https://developer.mozilla.org/de/docs/Rhino
-
+[3]: https://babeljs.io/

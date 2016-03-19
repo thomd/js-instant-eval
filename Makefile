@@ -11,6 +11,6 @@ uninstall:
 	rm -f ${BINDIR}/es
 
 test:
-	bats test/js.bats
+	bats test/*.bats
 
 .PHONY: test install uninstall

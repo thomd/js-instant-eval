@@ -6,9 +6,8 @@ if [ $# -eq 0 ] || [ ! -f ${!#} ]; then
   echo "Usage: es script.js" 1>&2 && exit 1;
 fi
 
-FILE=$1
 TMPFILE=`mktemp /tmp/es.XXXXXX`
-test -d node_modules && ln -s "$PWD/node_modules" /tmp/node_modules
+test -d node_modules && test ! -d /tmp/node_modules && ln -s "$PWD/node_modules" /tmp/node_modules
 
 function compile {
   babel --presets es2015,react $FILE -o $TMPFILE
@@ -31,8 +30,24 @@ function watch {
   done
 }
 
-trap exit SIGINT
-clear
-compile
-watch
+while test $# -ne 0; do
+  arg=$1
+  shift
+  case $arg in
+    --no-watch)
+      NOWATCH=true
+      ;;
+    *)
+      FILE=$arg
+      ;;
+  esac
+done
 
+if [ $NOWATCH ]; then
+  compile
+else
+  trap exit SIGINT
+  [ $CYGWIN ] && printf "\033c" || clear
+  compile
+  watch
+fi
