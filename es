@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
-#set -x
+set -e
+[ -n "$ES_DEBUG" ] && set -x
+
+if [ $# -eq 0 ] || [ ! -f ${!#} ]; then
+  echo "Usage: es script.js" 1>&2 && exit 1;
+fi
 
 FILE=$1
 TMPFILE=`mktemp /tmp/es.XXXXXX`
