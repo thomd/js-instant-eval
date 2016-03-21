@@ -3,7 +3,7 @@ set -e
 [ -n "$ES_DEBUG" ] && set -x
 
 if [ $# -eq 0 ] || [ ! -f ${!#} ]; then
-  echo "Usage: es script.js" 1>&2 && exit 1;
+  echo "Usage: es [--no-watch] script.js" 1>&2 && exit 1;
 fi
 
 TMPFILE=`mktemp /tmp/es.XXXXXX`
