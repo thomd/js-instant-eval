@@ -7,7 +7,7 @@ before_install:
   - "PACKAGE=rhino1_7R4; curl -L -O https://github.com/downloads/mozilla/rhino/$PACKAGE.zip && sudo unzip $PACKAGE -d /opt/ && rm $PACKAGE.zip"
   - "PACKAGE=rhino1_7R4; echo -e '#!/bin/sh\\njava -jar /opt/rhino1_7R4/js.jar $@' | sudo tee /usr/local/bin/rhino && sudo chmod +x /usr/local/bin/rhino"
   - "npm install babel babel-core babel-cli babel-preset-es2015 babel-preset-react"
-  - "sudo ln -s /usr/bin/babel node_modules/.bin/babel"
+  - "sudo ln -s node_modules/.bin/babel /usr/bin/babel"
 install:
   - git clone https://github.com/sstephenson/bats.git
 script: bats/bin/bats --tap test
